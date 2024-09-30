@@ -1,0 +1,29 @@
+#values-dev.yaml
+environment: dev  
+
+frontend:
+  image:
+    repository: bansikah/user-frontend
+    tag: "1.1"
+    pullPolicy: IfNotPresent
+  replicaCount: 1
+  # env:
+  #   REACT_APP_API_URL: "http://backend.localhost/api"
+  ports:
+    - containerPort: 80
+  nodeSelector:
+    role: worker  
+
+backend:
+  image:
+    repository: bansikah/user-backend
+    tag: "1.1"
+    pullPolicy: IfNotPresent
+  replicaCount: 1
+  ports:
+    - containerPort: 8082
+  nodeSelector:
+    role: worker  
+
+ingress:
+  host: user-app-dev.local

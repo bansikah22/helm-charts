@@ -1,0 +1,25 @@
+#values-prod.yaml
+environment: prod  
+
+frontend:
+  image:
+    repository: bansikah/user-frontend
+    tag: "1.1"
+  replicaCount: 2
+  env:
+    REACT_APP_API_URL: "http://backend.localhost/api"
+  ports:
+    - containerPort: 80
+  nodeSelector:
+    role: worker  
+
+backend:
+  image:
+    repository: bansikah/user-backend
+    tag: "1.1"
+  replicaCount: 2
+  nodeSelector:
+    role: worker  
+
+ingress:
+  host: backend.localhost
