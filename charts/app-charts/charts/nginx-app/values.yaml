@@ -1,0 +1,18 @@
+replicaCount: 1
+
+image:
+  repository: nginx
+  tag: latest
+  pullPolicy: IfNotPresent
+  nodeSelector: 
+    role: worker
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  host: nginx-app.local
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /

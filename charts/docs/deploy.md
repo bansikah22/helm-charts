@@ -30,3 +30,7 @@ kubectl get pods -n dev
 
 ```
 
+## Deploying nginx-app
+```bash
+echo "$(minikube ip) nginx-app.local" | sudo tee -a /etc/hosts
+```
