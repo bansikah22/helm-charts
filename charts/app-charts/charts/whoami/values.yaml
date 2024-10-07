@@ -1,0 +1,53 @@
+# values.yaml
+
+# Traefik Global Configuration
+global:
+  sendAnonymousUsage: false  # Disable sending anonymous usage statistics
+
+# EntryPoints Configuration
+entryPoints:
+  web:
+    address: ":80"  # Expose HTTP traffic on port 80
+  websecure:
+    address: ":443"  # Expose HTTPS traffic on port 443
+
+# Traefik Dashboard Configuration
+dashboard:
+  enabled: true  # Enable the Traefik dashboard
+  domain: "traefik.local"  # Domain for the dashboard
+
+# Ports Configuration
+ports:
+  web:
+    expose:
+      enabled: true   # Enable exposure for the web port
+      port: 80        # Port for HTTP traffic
+      protocol: TCP   # Protocol for the port
+  websecure:
+    expose:
+      enabled: true   # Enable exposure for the websecure port
+      port: 443       # Port for HTTPS traffic
+      protocol: TCP   # Protocol for the port
+
+# Provider Configuration
+providers:
+  kubernetesIngress:  # Enable Kubernetes Ingress provider
+    enabled: true
+
+# Additional Configuration
+# # Set additional labels, annotations, or other settings as needed
+# service:
+#   enabled: true
+#   type: LoadBalancer  # Expose the Traefik service as a LoadBalancer
+#   annotations:       # Optional annotations for the service
+#     service.beta.kubernetes.io/aws-load-balancer-type: "nlb"  # Example for AWS NLB
+
+# Additional middleware configuration can go here
+# For example, to enable Let's Encrypt
+# certificatesResolvers:
+#   myresolver:
+#     acme:
+#       email: your-email@example.com  # Email for Let's Encrypt notifications
+#       storage: acme.json              # Path to store the certificates
+#       httpChallenge:
+#         entryPoint: web  # Use the web entry point for the HTTP challenge

@@ -1,0 +1,15 @@
+replicaCount: 2
+
+image:
+  repository: bansikah/random-group-generator
+  tag: "1.1"
+  pullPolicy: IfNotPresent
+
+service:
+  type: NodePort
+  port: 5000
+
+ingress:
+  enabled: true
+  host: random-group-generator.local
+  path: /

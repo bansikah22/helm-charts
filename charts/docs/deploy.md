@@ -34,3 +34,39 @@ kubectl get pods -n dev
 ```bash
 echo "$(minikube ip) nginx-app.local" | sudo tee -a /etc/hosts
 ```
+
+
+## Deploy random group generator flask app
+```bash
+helm upgrade --install traefik traefik/traefik -f values.yaml -n kube-system
+helm install random-group-generator ./random-group-generator-chart
+## edit /etc/hosts file
+127.0.0.1 random-group-generator.local
+helm upgrade random-group-generator ./random-group-generator-chart
+## debuging
+kubectl delete svc -n kube-system traefik
+helm upgrade --install traefik traefik/traefik -n kube-system --set service.type=LoadBalancer
+kubectl get svc -n kube-system traefik
+```
+
+## deploying random group generator
+```bash
+minikube start
+### install traefik
+helm repo add traefik https://helm.traefik.io/traefik
+helm repo update
+helm install traefik traefik/traefik --namespace kube-system --create-namespace --set service.type=NodePort --set dashboard.enabled=true --set dashboard.domain=traefik.local
+
+### deploy application
+helm install random-group-generator ./charts/random-group-generator --namespace default --create-namespace
+
+## edit /etc/hosts
+192.168.49.2 random-group-generator.local # Replace with your Minikube IP.
+192.168.49.2 traefik.local               # Replace with your Minikube IP.
+
+## test application
+curl http://random-group-generator.local/
+
+## monitor
+kubectl logs -l app=random-group-generator -n default 
+```
