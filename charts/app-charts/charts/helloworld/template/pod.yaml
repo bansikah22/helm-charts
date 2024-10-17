@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-helmpod
+  labels:
+    name: nginx-helmpod
+spec:
+  containers:
+  - name: nginx-helmpod
+    image: ningx:latest
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 80

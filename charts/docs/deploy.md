@@ -69,4 +69,5 @@ curl http://random-group-generator.local/
 
 ## monitor
 kubectl logs -l app=random-group-generator -n default 
+
 ```

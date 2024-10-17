@@ -1,0 +1,8 @@
+replicaCount: 1
+
+nginx-helmpod:
+  repository: nginx
+  pullPolicy: IfNotPresent
+  ports:
+    - containerPort: 80
+
