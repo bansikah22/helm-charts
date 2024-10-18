@@ -13,6 +13,9 @@ frontend:
     - containerPort: 80
   nodeSelector:
     role: worker  
+  serviceAccount:
+    create: true
+    name: shop-frontend-sa
 
 backend:
   image:
@@ -21,6 +24,9 @@ backend:
   replicaCount: 1
   nodeSelector:
     role: worker  
+  serviceAccount:
+    create: true
+    name: shop-backend-sa
 
 postgres:
   image:

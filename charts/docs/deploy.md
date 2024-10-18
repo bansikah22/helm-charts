@@ -18,6 +18,14 @@ ping shop-app-dev.local
 nslookup shop-app-dev.local
 helm uninstall shop-app-dev -n dev
 minikube addons enable ingress ## Always enable when using ingress with nginx
+##RBAC configuration
+##Test configuration of rbac
+kubectl auth can-i delete pods --as=system:serviceaccount:default:frontend-sa
+kubectl auth can-i delete pods --as=system:serviceaccount:default:backend-sa
+##Get roles
+kubectl get rolebindings -n dev
+kubectl get roles -n dev
+
 ```
 
 ## Deploying user-app

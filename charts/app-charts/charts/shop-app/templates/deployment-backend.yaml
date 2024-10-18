@@ -12,8 +12,7 @@ spec:
       labels:
         app: backend
     spec:
-      nodeSelector:
-        {{- .Values.backend.nodeSelector | toYaml | nindent 8 }}
+      serviceAccountName: {{ .Values.backend.serviceAccount.name }}  # Attach service account
       containers:
       - name: backend
         image: {{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag }}

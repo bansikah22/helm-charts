@@ -14,6 +14,7 @@ spec:
     spec:
       nodeSelector:
         {{- .Values.frontend.nodeSelector | toYaml | nindent 8 }}
+      serviceAccountName: {{ .Values.frontend.serviceAccount.name }}
       containers:
       - name: frontend
         image: {{ .Values.frontend.image.repository }}:{{ .Values.frontend.image.tag }}
