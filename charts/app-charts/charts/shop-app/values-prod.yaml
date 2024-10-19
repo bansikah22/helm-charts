@@ -1,17 +1,27 @@
-#values-prod.yaml
-environment: prod
+#values-prod.yaml shop app
+environment: prod 
 
 frontend:
   image:
     repository: bansikah/shop-frontend
-    tag: "1.1"
+    tag: "1.2.2"
   replicaCount: 2
+  pullPolicy: IfNotPresent
+  env:
+    REACT_APP_API_URL: "https://shop-app-prod.bansikah.ip-dynamic.org/api"
+  ports:
+    - containerPort: 80
+  nodeSelector:
+    role: worker  
 
 backend:
   image:
     repository: bansikah/shop-backend
-    tag: "1.1"
+    tag: "1.2.2"
   replicaCount: 2
+  pullPolicy: IfNotPresent
+  nodeSelector:
+    role: worker  
 
 postgres:
   image:
@@ -19,7 +29,9 @@ postgres:
     tag: latest
   database: shopdb
   username: postgresuser
-  password: prodpassword
+  password: postgrespass
+  nodeSelector:
+    role: worker  
 
 ingress:
-  host: shop-app-prod.local
+  host: shop-app-prod.bansikah.ip-dynamic.org

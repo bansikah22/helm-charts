@@ -18,6 +18,17 @@ ping shop-app-dev.local
 nslookup shop-app-dev.local
 helm uninstall shop-app-dev -n dev
 minikube addons enable ingress ## Always enable when using ingress with nginx
+## Debuging prod deployment
+nslookup shop-app-prod.bansikah.ip-dynamic.org
+dig shop-app-prod.bansikah.ip-dynamic.org
+kubectl get ingress -n prod
+kubectl get svc -n prod
+kubectl get pods -n prod
+kubectl delete ingress argocd-ingress --namespace argocd
+echo "$(minikube ip) shop-app-prod.bansikah.ip-dynamic.org" | sudo tee -a /etc/hosts
+helm upgrade --install shop-app-prod --namespace prod ./app-charts/charts/shop-app --values ./app-charts/charts/shop-app/values-prod.yaml
+helm uninstall shop-app-prod --namespace prod
+
 ```
 
 ## Deploying user-app

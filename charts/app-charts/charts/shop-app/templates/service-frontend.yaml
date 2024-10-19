@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: {{ .Release.Name }}-frontend
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: frontend
   ports:
