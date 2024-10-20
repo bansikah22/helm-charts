@@ -1,0 +1,6 @@
+#Chart.yaml
+apiVersion: v2
+name: nginx-chart
+description: A Helm chart for Nginx deployment with self-signed TLS
+version: 0.1.0
+appVersion: "1.21.0"

@@ -1,0 +1,7 @@
+#values-prod.yaml
+replicaCount: 2
+image:
+  tag: "v1"
+ingress:
+  host: noelbansikah.com
+  tls: true
