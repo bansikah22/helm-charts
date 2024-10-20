@@ -34,4 +34,5 @@ postgres:
     role: worker  
 
 ingress:
+  enabled: true
   host: shop-app-prod.bansikah.ip-dynamic.org

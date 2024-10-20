@@ -26,6 +26,7 @@ kubectl get svc -n prod
 kubectl get pods -n prod
 kubectl delete ingress argocd-ingress --namespace argocd
 echo "$(minikube ip) shop-app-prod.bansikah.ip-dynamic.org" | sudo tee -a /etc/hosts
+helm install shop-app-prod --namespace prod ./app-charts/charts/shop-app --values ./app-charts/charts/shop-app/values-prod.yaml
 helm upgrade --install shop-app-prod --namespace prod ./app-charts/charts/shop-app --values ./app-charts/charts/shop-app/values-prod.yaml
 helm uninstall shop-app-prod --namespace prod
 

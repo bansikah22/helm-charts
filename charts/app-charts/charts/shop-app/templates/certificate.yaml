@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: shop-app-prod-tls
+  namespace: prod
+spec:
+  secretName: shop-app-prod-tls
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  dnsNames:
+  - shop-app-prod.bansikah.ip-dynamic.org
