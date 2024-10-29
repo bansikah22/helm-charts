@@ -1,5 +1,4 @@
-1.
-- Difference between ledgers and cms db
+1. Difference between ledgers and cms db
  - ledgers store the information concerning the account, account like the bank database
  - cms db stores the information about the concent of the users
 
@@ -8,8 +7,8 @@
  - `Urls and rest controllers used`: There are no rest controllers, it is just and interface to transfer context data(`information about the psu and tpp`) between xs2a and connector
 
 3. Explain if our xs2a solution can be installed in a real bank in and if yes, then how?
-  - `Answer:` No, it can not be installed in a real bank, 
-   - why xs2a solution is tied to connector example , each bank has its own connector example 
+  - `Answer:` Yes, it can be installed in a real bank, 
+  - it depends 
 
 4. Can we use model bank application without connector examples? why?
  - `Answer:` No, if its our model bank, we can't Because Model bank depends on connector example, which it uses it as a library
@@ -19,7 +18,7 @@
 
 6. Describe the payment initiation flow in Modelbank.
 - `Answer:` we have two approaches(embedded and redirect)
- - `Redirect Approach`
+ - `Redirect Approach`ill try to answer. In the hotfix, we are making a bug fix in the connector example. When we create a
    - initiate payment
    - Get payment status
    - Get payment information
@@ -80,7 +79,7 @@
 - `Answer`: switch to feature branch and check the version of the xs2a in the pom.xml, change version of xs2a in the projects tthat are depending on it
 ,(connector, modelbank)
 23. Describle your steps for the spring version in xs2a?
-- `Answer`: Visit the maven repository, look for version and changes that are related.
+- `Answer`: Visit the spring version, look for version and changes that are related.
 
 24.You have updated the spring version in xs2a and now integration tests are failing(spring content cannot be created) Describle steps
 - `Answer`: check config classes and make sure that updated version is compactible with , revisit test configuration. clear cache and rebuild
@@ -88,8 +87,8 @@
 25. How you test any java dependency for vulnerabilities?
 - `Answer`: Use tools like OWASP Dependency Checker, SonarQube, etc., visit maven repo, the vulnerabilities, are always shown there
 
-26.You try to perform sca for the payment for the postman test, PUT request gives 401 http status code, which application should you investigate and debug in this case?
-- `Answer`: Connector examples
+26.You try to perform sca for the payment from postman test, PUT request gives 401 http status code, which application should you investigate and debug in this case?
+- `Answer`: connector examples
 
 27. How can you see the balances for Anton Brueckner's account with the help of BG API? Describe all steps
 - `Answer`: Create the consent for Anton Brueckner with rights 
@@ -110,7 +109,7 @@
 - `Answer`: Ledgers does not deal with certificate validation.
 
 33. Why do we require hotfixes?
-- `Answer`: When we notice bugs in a release of a feature, and it has 3 values.
+- `Answer`: When we notice bugs in a release of a feature, and it has 3 digits.
 
 34. How can we change the version of project in all the pom.xml files?
 - `Answer`: By running the release script, manually update the version in all the pom.xml files. or we can use a code
